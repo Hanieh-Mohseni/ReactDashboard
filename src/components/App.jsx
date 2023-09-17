@@ -4,6 +4,7 @@ import Header from "./layout/Header";
 import { UserProvider } from "../client/context/UserContext";
 import { Routes, Route } from "react-router";
 import Home from "./pages/Home";
+import ErrorBoundary from "./base/ErrorBoundary";
 
 function App() {
   return (
@@ -12,15 +13,20 @@ function App() {
         <Layout>
           <Header />
           <Routes>
-            <Route path="/" />
-            <Route path="/" element={<Home />} />
-            {/* <Route path="/reviews" element={} /> */}
+            <Route
+              path="/"
+              element={
+                <ErrorBoundary>
+                  <Home />
+                </ErrorBoundary>
+              }
+            />
             {/* <Route path="/sales" element={} /> */}
+            {/* <Route path="/reviews" element={} /> */}
           </Routes>
         </Layout>
       </UserProvider>
     </>
   );
 }
-
 export default App;
