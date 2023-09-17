@@ -26818,11 +26818,14 @@ var _layout = require("./layout/Layout");
 var _layoutDefault = parcelHelpers.interopDefault(_layout);
 var _header = require("./layout/Header");
 var _headerDefault = parcelHelpers.interopDefault(_header);
+var _userContext = require("../client/context/UserContext");
 var _jsxRuntime = require("react/jsx-runtime");
 function App() {
     return /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _jsxRuntime.Fragment), {
-        children: /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _layoutDefault.default), {
-            children: /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _headerDefault.default), {})
+        children: /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _userContext.UserProvider), {
+            children: /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _layoutDefault.default), {
+                children: /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _headerDefault.default), {})
+            })
         })
     });
 }
@@ -26836,7 +26839,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"./App.css":"7eg3s","./layout/Layout":"lyoJU","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./layout/Header":"6t1ww"}],"7eg3s":[function() {},{}],"lyoJU":[function(require,module,exports) {
+},{"./App.css":"7eg3s","./layout/Layout":"lyoJU","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./layout/Header":"6t1ww","../client/context/UserContext":"f1SeS"}],"7eg3s":[function() {},{}],"lyoJU":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$36f1 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -29479,16 +29482,24 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _solid = require("@heroicons/react/solid");
+var _react = require("react");
+var _userContext = require("../../client/context/UserContext");
 var _jsxRuntime = require("react/jsx-runtime");
+var _s = $RefreshSig$();
 function Header() {
+    _s();
+    const { storeNumber } = (0, _react.useContext)((0, _userContext.UserContext));
     return /*#__PURE__*/ (0, _jsxRuntime.jsxs)("header", {
         className: "flex justify-between pl-14 mt-8 w-4/5 m-auto",
         children: [
             /*#__PURE__*/ (0, _jsxRuntime.jsxs)("div", {
                 className: "flex flex-col justify-center",
                 children: [
-                    /*#__PURE__*/ (0, _jsxRuntime.jsx)("h1", {
-                        children: "Store 321"
+                    /*#__PURE__*/ (0, _jsxRuntime.jsxs)("h1", {
+                        children: [
+                            "Store ",
+                            storeNumber
+                        ]
                     }),
                     /*#__PURE__*/ (0, _jsxRuntime.jsx)("p", {
                         className: "font-thin text-s",
@@ -29505,6 +29516,7 @@ function Header() {
         ]
     });
 }
+_s(Header, "FyRI+F1xGiguW6ZBrsx+umej1vA=");
 _c = Header;
 exports.default = Header;
 var _c;
@@ -29515,6 +29527,42 @@ $RefreshReg$(_c, "Header");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"@heroicons/react/solid":"9Z9eb","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}]},["4s3Ar","1xC6H","d8Dch"], "d8Dch", "parcelRequireace3")
+},{"@heroicons/react/solid":"9Z9eb","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq","../../client/context/UserContext":"f1SeS"}],"f1SeS":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$10bc = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$10bc.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "UserContext", ()=>UserContext);
+parcelHelpers.export(exports, "UserProvider", ()=>UserProvider);
+var _react = require("react");
+var _jsxRuntime = require("react/jsx-runtime");
+const UserContext = /*#__PURE__*/ (0, _react.createContext)({
+    storeNumber: "001",
+    location: "Hoboken, NJ"
+});
+function UserProvider({ children }) {
+    const user = {
+        storeNumber: "502",
+        location: "Louisville, KY"
+    };
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(UserContext.Provider, {
+        value: user,
+        children: children
+    });
+}
+_c = UserProvider;
+var _c;
+$RefreshReg$(_c, "UserProvider");
+
+  $parcel$ReactRefreshHelpers$10bc.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"21dqq","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}]},["4s3Ar","1xC6H","d8Dch"], "d8Dch", "parcelRequireace3")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
