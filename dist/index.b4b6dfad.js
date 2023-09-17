@@ -29709,6 +29709,8 @@ var _userContext = require("../client/context/UserContext");
 var _reactRouter = require("react-router");
 var _home = require("./pages/Home");
 var _homeDefault = parcelHelpers.interopDefault(_home);
+var _errorBoundary = require("./base/ErrorBoundary");
+var _errorBoundaryDefault = parcelHelpers.interopDefault(_errorBoundary);
 var _jsxRuntime = require("react/jsx-runtime");
 function App() {
     return /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _jsxRuntime.Fragment), {
@@ -29716,16 +29718,13 @@ function App() {
             children: /*#__PURE__*/ (0, _jsxRuntime.jsxs)((0, _layoutDefault.default), {
                 children: [
                     /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _headerDefault.default), {}),
-                    /*#__PURE__*/ (0, _jsxRuntime.jsxs)((0, _reactRouter.Routes), {
-                        children: [
-                            /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _reactRouter.Route), {
-                                path: "/"
-                            }),
-                            /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _reactRouter.Route), {
-                                path: "/",
-                                element: /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _homeDefault.default), {})
+                    /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _reactRouter.Routes), {
+                        children: /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _reactRouter.Route), {
+                            path: "/",
+                            element: /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _errorBoundaryDefault.default), {
+                                children: /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _homeDefault.default), {})
                             })
-                        ]
+                        })
                     })
                 ]
             })
@@ -29742,7 +29741,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"./App.css":"7eg3s","./layout/Layout":"lyoJU","./layout/Header":"6t1ww","../client/context/UserContext":"f1SeS","react-router":"dbWyW","./pages/Home":"1MQiw","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"7eg3s":[function() {},{}],"lyoJU":[function(require,module,exports) {
+},{"./App.css":"7eg3s","./layout/Layout":"lyoJU","./layout/Header":"6t1ww","../client/context/UserContext":"f1SeS","react-router":"dbWyW","./pages/Home":"1MQiw","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./base/ErrorBoundary":"bm8iy"}],"7eg3s":[function() {},{}],"lyoJU":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$36f1 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -32635,48 +32634,78 @@ function Home() {
             console.error(e);
         }
     }
-    return /*#__PURE__*/ (0, _jsxRuntime.jsx)("main", {
+    return /*#__PURE__*/ (0, _jsxRuntime.jsxs)("main", {
         className: "grid pl-14 grid-cols-2 gap-8 w-4/5 m-auto mt-4 mb-8",
-        children: /*#__PURE__*/ (0, _jsxRuntime.jsxs)((0, _kpiGridDefault.default), {
-            children: [
-                /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _kpiBlockDefault.default), {
-                    svgComponent: /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _solid.CheckCircleIcon), {
-                        className: "h-6 w-6"
+        children: [
+            /*#__PURE__*/ (0, _jsxRuntime.jsxs)((0, _kpiGridDefault.default), {
+                children: [
+                    /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _kpiBlockDefault.default), {
+                        svgComponent: /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _solid.CheckCircleIcon), {
+                            className: "h-6 w-6"
+                        }),
+                        title: "conversion",
+                        time: "today",
+                        value: (0, _kpiFunctions.ConversionRate)((0, _kpiFunctions.getYtdValue)(dailyKpis.traffic), dailyKpis.transactions),
+                        targetValue: 20
                     }),
-                    title: "conversion",
-                    time: "today",
-                    value: (0, _kpiFunctions.ConversionRate)((0, _kpiFunctions.getYtdValue)(dailyKpis.traffic), dailyKpis.transactions),
-                    targetValue: 20
-                }),
-                /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _kpiBlockDefault.default), {
-                    svgComponent: /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _solid.CurrencyDollarIcon), {
-                        className: "h-6 w-6"
+                    /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _kpiBlockDefault.default), {
+                        svgComponent: /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _solid.CurrencyDollarIcon), {
+                            className: "h-6 w-6"
+                        }),
+                        title: "sales",
+                        time: "today",
+                        value: (0, _formattingFunctions.formatMoneyValue)(dailyKpis.sales),
+                        targetValue: 5300
                     }),
-                    title: "sales",
-                    time: "today",
-                    value: (0, _formattingFunctions.formatMoneyValue)(dailyKpis.sales),
-                    targetValue: 5300
-                }),
-                /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _kpiBlockDefault.default), {
-                    svgComponent: /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _solid.ShoppingBagIcon), {
-                        className: "h-6 w-6"
+                    /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _kpiBlockDefault.default), {
+                        svgComponent: /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _solid.ShoppingBagIcon), {
+                            className: "h-6 w-6"
+                        }),
+                        title: "transactions",
+                        time: "today",
+                        value: dailyKpis.transactions,
+                        targetValue: 104
                     }),
-                    title: "transactions",
-                    time: "today",
-                    value: dailyKpis.transactions,
-                    targetValue: 104
-                }),
-                /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _kpiBlockDefault.default), {
-                    svgComponent: /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _solid.GiftIcon), {
-                        className: "h-6 w-6"
-                    }),
-                    title: "units",
-                    time: "today",
-                    value: dailyKpis.units,
-                    targetValue: 84
-                })
-            ]
-        })
+                    /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _kpiBlockDefault.default), {
+                        svgComponent: /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _solid.GiftIcon), {
+                            className: "h-6 w-6"
+                        }),
+                        title: "units",
+                        time: "today",
+                        value: dailyKpis.units,
+                        targetValue: 84
+                    })
+                ]
+            }),
+            /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _areaGraphDefault.default), {
+                data: dailyKpis.traffic,
+                totalValue: (0, _kpiFunctions.getYtdValue)(dailyKpis.traffic),
+                label: "traffic",
+                categoryToggle: null,
+                columnsSpan: "col-span-1"
+            }),
+            /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _tableDefault.default), {
+                tableHeaders: [
+                    "Name",
+                    "Email",
+                    "Employee Number",
+                    "Role",
+                    "Phone Number",
+                    "Zone"
+                ],
+                tableData: employees,
+                gridLayout: "col-span-2 place-self-center",
+                dropDownOptions: [
+                    "Leader",
+                    "Cashier",
+                    "Stock",
+                    "Greeter",
+                    "Middle"
+                ],
+                dropDownState: null,
+                setDropDownState: null
+            })
+        ]
     });
 }
 _s(Home, "J+3Sls7caT9LC2qiluenbL5XCIo=");
@@ -32690,7 +32719,7 @@ $RefreshReg$(_c, "Home");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"21dqq","../base/KpiBlock":"5BIjr","../base/KpiGrid":"kLLlM","../base/AreaGraph":"kTt31","../base/Table":"528rP","../../utils/functions/KpiFunctions":"5ZuVB","../../utils/functions/formattingFunctions":"3Jkbr","@heroicons/react/solid":"9Z9eb","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"5BIjr":[function(require,module,exports) {
+},{"react":"21dqq","../base/KpiBlock":"5BIjr","../base/KpiGrid":"kLLlM","../base/AreaGraph":"kTt31","../../utils/functions/KpiFunctions":"5ZuVB","../../utils/functions/formattingFunctions":"3Jkbr","@heroicons/react/solid":"9Z9eb","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../base/Table":"528rP"}],"5BIjr":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$2f20 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -70350,6 +70379,62 @@ var AccessibilityManager = /*#__PURE__*/ function() {
     return AccessibilityManager;
 }();
 
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5ZuVB":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "ConversionRate", ()=>ConversionRate);
+parcelHelpers.export(exports, "getYtdValue", ()=>getYtdValue);
+parcelHelpers.export(exports, "getYearAds", ()=>getYearAds);
+parcelHelpers.export(exports, "getYearUpt", ()=>getYearUpt);
+function ConversionRate(interaction, conversion) {
+    return `${Math.round(conversion / interaction * 100)}%`;
+}
+_c = ConversionRate;
+function getYtdValue(data) {
+    var totalValue = 0;
+    console.log(data);
+    if (data.length != 0 || data != 0 || data != null) data.forEach((element)=>{
+        totalValue = totalValue + element.ytd;
+    });
+    return totalValue;
+}
+function getYearAds(netSales, netTransactions) {
+    return Math.round(netSales / netTransactions);
+}
+function getYearUpt(netUnitsSold, netTransactions) {
+    return Math.round(100 * (netUnitsSold / netTransactions)) / 100;
+}
+var _c;
+$RefreshReg$(_c, "ConversionRate");
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3Jkbr":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "formatPhoneNumber", ()=>formatPhoneNumber);
+parcelHelpers.export(exports, "formatMoneyValue", ()=>formatMoneyValue);
+parcelHelpers.export(exports, "formatPercentage", ()=>formatPercentage);
+parcelHelpers.export(exports, "formatLargeNumbers", ()=>formatLargeNumbers);
+function formatPhoneNumber(phoneNumber) {
+    if (phoneNumber == null) return;
+    var cleanedString = phoneNumber.toString().replace(/[^A-Za-z0-9]+/g, "");
+    if (cleanedString.length <= 3) return cleanedString;
+    else if (cleanedString.length <= 7) return `${cleanedString.slice(0, 3)}-${cleanedString.slice(3)}`;
+    else return `${cleanedString.slice(0, 3)}-${cleanedString.slice(3, 6)}-${cleanedString.slice(6, 10)}`;
+}
+function formatMoneyValue(total, currency) {
+    if (currency == null || currency == "us") {
+        let totalWithCommas = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return `$${totalWithCommas}`;
+    }
+}
+function formatPercentage(total) {
+    return `${total}%`;
+}
+function formatLargeNumbers(number) {
+    let numberWithCommas = number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return numberWithCommas;
+}
+
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"528rP":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$9de5 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
@@ -72476,62 +72561,63 @@ function c(a = 0) {
     };
 }
 
-},{"react":"21dqq","./use-is-mounted.js":"cOwrt","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3Jkbr":[function(require,module,exports) {
+},{"react":"21dqq","./use-is-mounted.js":"cOwrt","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bm8iy":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$5ef8 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$5ef8.prelude(module);
+
+try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "formatPhoneNumber", ()=>formatPhoneNumber);
-parcelHelpers.export(exports, "formatMoneyValue", ()=>formatMoneyValue);
-parcelHelpers.export(exports, "formatPercentage", ()=>formatPercentage);
-parcelHelpers.export(exports, "formatLargeNumbers", ()=>formatLargeNumbers);
-function formatPhoneNumber(phoneNumber) {
-    if (phoneNumber == null) return;
-    var cleanedString = phoneNumber.toString().replace(/[^A-Za-z0-9]+/g, "");
-    if (cleanedString.length <= 3) return cleanedString;
-    else if (cleanedString.length <= 7) return `${cleanedString.slice(0, 3)}-${cleanedString.slice(3)}`;
-    else return `${cleanedString.slice(0, 3)}-${cleanedString.slice(3, 6)}-${cleanedString.slice(6, 10)}`;
-}
-function formatMoneyValue(total, currency) {
-    if (currency == null || currency == "us") {
-        let totalWithCommas = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        return `$${totalWithCommas}`;
+var _react = require("react");
+var _jsxRuntime = require("react/jsx-runtime");
+class ErrorBoundary extends (0, _react.Component) {
+    constructor(props){
+        super(props);
+        this.state = {
+            hasError: false
+        };
+    }
+    static getDerivedStateFromError() {
+        return {
+            hasError: true
+        };
+    }
+    componentDidCatch(error, info) {
+        console.error(error, info);
+    }
+    render() {
+        if (this.state.hasError) return /*#__PURE__*/ (0, _jsxRuntime.jsx)("div", {
+            className: "flex flex-col w-3/4 rounded-2xl shadow-xl py-2 m-auto my-4",
+            children: /*#__PURE__*/ (0, _jsxRuntime.jsxs)("section", {
+                className: " p-12 w-3/4 m-auto text-center text-red-600 ",
+                children: [
+                    /*#__PURE__*/ (0, _jsxRuntime.jsx)("h2", {
+                        role: "alert",
+                        className: "my-4",
+                        children: "Sorry! There is an error with our server."
+                    }),
+                    /*#__PURE__*/ (0, _jsxRuntime.jsxs)("p", {
+                        children: [
+                            "The issue should be fixed soon.",
+                            /*#__PURE__*/ (0, _jsxRuntime.jsx)("br", {}),
+                            "Please contact your IT representative if you have any questions."
+                        ]
+                    })
+                ]
+            })
+        });
+        return this.props.children;
     }
 }
-function formatPercentage(total) {
-    return `${total}%`;
-}
-function formatLargeNumbers(number) {
-    let numberWithCommas = number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return numberWithCommas;
-}
+exports.default = ErrorBoundary;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5ZuVB":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "ConversionRate", ()=>ConversionRate);
-parcelHelpers.export(exports, "getYtdValue", ()=>getYtdValue);
-parcelHelpers.export(exports, "getYearAds", ()=>getYearAds);
-parcelHelpers.export(exports, "getYearUpt", ()=>getYearUpt);
-function ConversionRate(interaction, conversion) {
-    return `${Math.round(conversion / interaction * 100)}%`;
+  $parcel$ReactRefreshHelpers$5ef8.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
 }
-_c = ConversionRate;
-function getYtdValue(data) {
-    var totalValue = 0;
-    console.log(data);
-    if (data.length != 0 || data != 0 || data != null) data.forEach((element)=>{
-        totalValue = totalValue + element.ytd;
-    });
-    return totalValue;
-}
-function getYearAds(netSales, netTransactions) {
-    return Math.round(netSales / netTransactions);
-}
-function getYearUpt(netUnitsSold, netTransactions) {
-    return Math.round(100 * (netUnitsSold / netTransactions)) / 100;
-}
-var _c;
-$RefreshReg$(_c, "ConversionRate");
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["4s3Ar","1xC6H","d8Dch"], "d8Dch", "parcelRequireace3")
+},{"react":"21dqq","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}]},["4s3Ar","1xC6H","d8Dch"], "d8Dch", "parcelRequireace3")
 
 //# sourceMappingURL=index.b4b6dfad.js.map

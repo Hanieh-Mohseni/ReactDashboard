@@ -78,6 +78,34 @@ function Home() {
         />
       </KpiGrid>
       {/* End of KPI Grid */}
+
+      {/* Start of Traffic Area Graph */}
+      <AreaGraph
+        data={dailyKpis.traffic}
+        totalValue={getYtdValue(dailyKpis.traffic)}
+        label="traffic"
+        categoryToggle={null}
+        columnsSpan="col-span-1"
+      />
+      {/* End  of Traffic Area Graph */}
+
+      {/* Start of Employee Table*/}
+      <Table
+        tableHeaders={[
+          "Name",
+          "Email",
+          "Employee Number",
+          "Role",
+          "Phone Number",
+          "Zone",
+        ]}
+        tableData={employees}
+        gridLayout="col-span-2 place-self-center"
+        dropDownOptions={["Leader", "Cashier", "Stock", "Greeter", "Middle"]}
+        dropDownState={null}
+        setDropDownState={null}
+      />
+      {/* End  of Employee Table* */}
     </main>
   );
 }
