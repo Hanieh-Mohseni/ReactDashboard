@@ -40,7 +40,31 @@ function Reviews() {
   }
 
   return (
-    <main className="grid pl-14 grid-cols-2 grid-rows-2 h-screen gap-8 w-4/5 m-auto mt-4 mb-8"></main>
+    <main className="grid pl-14 grid-cols-2 grid-rows-2 h-screen gap-8 w-4/5 m-auto mt-4 mb-8">
+      {/* Start of CSAT Area Graph */}
+      <AreaGraph
+        data={category === "CSAT" ? reviewStats.csat : reviewStats.nps}
+        totalValue={
+          category === "CSAT"
+            ? formatPercentage(reviewStats.totals.csat)
+            : formatPercentage(reviewStats.totals.nps)
+        }
+        label={
+          category === "CSAT"
+            ? "Customer Satisfaction Score"
+            : "Net Promoter Score"
+        }
+        categoryToggle={
+          <DropDown
+            list={["CSAT", "NPS"]}
+            parentStateSelect={category}
+            setParentStateSelect={setCategory}
+          />
+        }
+        columnsSpan="col-span-1"
+      />
+      {/* End of CSAT Area Graph */}
+    </main>
   );
 }
 
