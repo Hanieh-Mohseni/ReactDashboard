@@ -23,7 +23,7 @@ function App() {
               }
             />
             <Route
-              path="/"
+              path="/reviews"
               element={
                 <ErrorBoundary>
                   <Reviews />
@@ -31,7 +31,6 @@ function App() {
               }
             />
             {/* <Route path="/sales" element={} /> */}
-            {/* <Route path="/reviews" element={} /> */}
           </Routes>
         </Layout>
       </UserProvider>

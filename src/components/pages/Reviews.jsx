@@ -88,6 +88,22 @@ function Reviews() {
         columnsSpan="col-span-1"
       />
       {/* End of Demographics Pie Graph */}
+
+      {/* Start of Reviews Table */}
+      <Table
+        tableHeaders={[
+          "Name",
+          "Email",
+          "Date",
+          "Overall Satisfaction",
+          "Promoter Score",
+          "Was Helped",
+          "Comments",
+        ]}
+        tableData={reviews}
+        gridLayout="col-span-2 place-self-center"
+      />
+      {/* End of Reviews Table */}
     </main>
   );
 }
