@@ -49,7 +49,17 @@ function Sales() {
       console.error(e);
     }
   }
-  return ();
+  return (
+    <main className="grid pl-14 grid-cols-2 grid-rows-2 h-screen gap-8 w-4/5 m-auto mt-4 mb-8">
+      {/* Area Graph */}
+      <AreaGraph
+        data={salesTotals.sales}
+        totalValue={formatMoneyValue(getYtdValue(salesTotals.sales))}
+        label="Sales YTD"
+        columnsSpan="col-span-2"
+      />
+    </main>
+  );
 }
 
 export default Sales;
