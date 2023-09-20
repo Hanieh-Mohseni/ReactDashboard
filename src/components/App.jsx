@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router";
 import Home from "./pages/Home";
 import ErrorBoundary from "./base/ErrorBoundary";
 import Reviews from "./pages/Reviews";
+import Sales from "./pages/Sales";
 
 function App() {
   return (
@@ -30,7 +31,14 @@ function App() {
                 </ErrorBoundary>
               }
             />
-            {/* <Route path="/sales" element={} /> */}
+            <Route
+              path="/sales"
+              element={
+                <ErrorBoundary>
+                  <Sales />
+                </ErrorBoundary>
+              }
+            />
           </Routes>
         </Layout>
       </UserProvider>
