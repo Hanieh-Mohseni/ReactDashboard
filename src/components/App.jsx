@@ -5,6 +5,7 @@ import { UserProvider } from "../client/context/UserContext";
 import { Routes, Route } from "react-router";
 import Home from "./pages/Home";
 import ErrorBoundary from "./base/ErrorBoundary";
+import Reviews from "./pages/Reviews";
 
 function App() {
   return (
@@ -18,6 +19,14 @@ function App() {
               element={
                 <ErrorBoundary>
                   <Home />
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path="/"
+              element={
+                <ErrorBoundary>
+                  <Reviews />
                 </ErrorBoundary>
               }
             />
