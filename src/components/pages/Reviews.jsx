@@ -64,6 +64,30 @@ function Reviews() {
         columnsSpan="col-span-1"
       />
       {/* End of CSAT Area Graph */}
+
+      {/* Start of Demographics Pie Graph */}
+      <PieGraph
+        data={
+          demoCategory === "Gender"
+            ? reviewStats.demographics.gender
+            : reviewStats.demographics.age
+        }
+        colors={
+          demoCategory === "Gender"
+            ? ["#86198F", "#02155E", "#D1D5DB"]
+            : ["#86198F", "#02155E", "#D1D5DB", "#743BA0", "#468FCB", "#4B5563"]
+        }
+        label="Demographics"
+        categoryToggle={
+          <DropDown
+            list={["Gender", "Age"]}
+            parentStateSelect={demoCategory}
+            setParentStateSelect={setDemoCategory}
+          />
+        }
+        columnsSpan="col-span-1"
+      />
+      {/* End of Demographics Pie Graph */}
     </main>
   );
 }
