@@ -58,6 +58,69 @@ function Sales() {
         label="Sales YTD"
         columnsSpan="col-span-2"
       />
+
+      {/* KPI Grid */}
+      <KpiGrid>
+        <KpiBlock
+          svgComponent={<CheckCircleIcon className="h-6 w-6" />}
+          title="conversion"
+          time="today"
+          value={ConversionRate(
+            salesTotals.ytdTotals.traffic,
+            salesTotals.ytdTotals.transactions
+          )}
+          targetValue={20}
+        />
+        <KpiBlock
+          svgComponent={<PeopleSvg className="w-6 h-6" />}
+          title="traffic"
+          time="YTD"
+          value={formatLargeNumbers(salesTotals.ytdTotals.traffic)}
+          targetValue={20000}
+        />
+        <KpiBlock
+          svgComponent={<ShoppingBagIcon className="w-6 h-6" />}
+          title="transactions"
+          time="YTD"
+          value={formatLargeNumbers(salesTotals.ytdTotals.transactions)}
+          targetValue={5000}
+        />
+        <KpiBlock
+          svgComponent={<GiftIcon className="w-6 h-6" />}
+          title="units"
+          time="YTD"
+          value={formatLargeNumbers(salesTotals.ytdTotals.units)}
+          targetValue={10000}
+        />
+      </KpiGrid>
+
+      <BarGraph
+        data={category === "ADS" ? salesTotals.ads : salesTotals.upt}
+        totalValue={
+          category === "ADS"
+            ? formatMoneyValue(
+                getYearAds(
+                  getYtdValue(salesTotals.sales),
+                  salesTotals.ytdTotals.transactions
+                )
+              )
+            : getYearUpt(
+                salesTotals.ytdTotals.units,
+                salesTotals.ytdTotals.transactions
+              )
+        }
+        label={
+          category === "ADS" ? "Average Dollar Sale" : "Units Per Transaction"
+        }
+        categoryToggle={
+          <DropDown
+            list={["ADS", "UPT"]}
+            parentStateSelect={category}
+            setParentStateSelect={setCategory}
+          />
+        }
+        columnsSpan="col-span-1"
+      />
     </main>
   );
 }
